@@ -1,0 +1,19 @@
+import {NAME_LOWER}Controller from "@presentation/controllers/{NAME_LOWER}Controller";
+
+const express = require("express");
+
+const router = express.Router();
+
+router.post("/add", (req, res) => {NAME_LOWER}Controller.add{NAME_UPPER}(req, res));
+
+router.get("/get-{NAME_LOWER_PLURAL}", (req, res) =>
+  {NAME_LOWER}Controller.get{NAME_UPPER_PLURAL}(req, res)
+);
+
+router.delete("/delete/:id/:code", (req, res) =>
+  {NAME_LOWER}Controller.delete{NAME_UPPER}(req, res)
+);
+
+router.patch("/update/:id", (req, res) => {NAME_LOWER}Controller.update{NAME_UPPER}(req, res));
+
+export default router;

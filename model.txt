@@ -1,0 +1,18 @@
+import { {NAME_UPPER}Attributes } from "@core/utils/{NAME_UPPER}/types";
+import {
+    Table,
+    Column,
+    Model,
+    DataType,
+    CreatedAt,
+    UpdatedAt,
+    AutoIncrement,
+    PrimaryKey,
+} from "sequelize-typescript";
+
+@Table({
+    tableName: "{NAME_LOWER_PLURAL}",
+})
+export class {NAME_UPPER} extends Model<{NAME_UPPER}Attributes> {
+{DYNAMIC_PROPERTIES}
+}

@@ -1,0 +1,10 @@
+import { {NAME_UPPER}Details } from "@core/utils/{NAME_UPPER}/types";
+import { ErrorDetails } from "@core/utils/utils";
+import { {NAME_UPPER} } from "@infrastructure/models/{NAME_LOWER}Model";
+
+export interface I{NAME_UPPER}Repository {
+    create({NAME_LOWER}Details: {NAME_UPPER}Details, errors: ErrorDetails[]): Promise<void | null>;
+    findById(id: number, errors: ErrorDetails[]): Promise<{NAME_UPPER} | null>;
+    find{NAME_UPPER_PLURAL}(errors: ErrorDetails[]): Promise<{NAME_UPPER}[] | null>;
+    deleteById(id: number, errors: ErrorDetails[]): Promise<void | null>;
+}

@@ -1,0 +1,16 @@
+import { I{NAME_UPPER}Repository } from "@core/interfaces/I{NAME_UPPER}Repository";
+import { ErrorDetails } from "@core/utils/utils";
+import { {NAME_UPPER} } from "@infrastructure/models/{NAME_LOWER}Model";
+import { {NAME_UPPER}Repository } from "@infrastructure/repositories/{NAME_LOWER}Repository";
+
+export default class Get{NAME_UPPER_PLURAL} {
+    private {NAME_LOWER}Repository: I{NAME_UPPER}Repository;
+    constructor(){
+        this.{NAME_LOWER}Repository = new {NAME_UPPER}Repository();
+    }
+    async execute(errors: ErrorDetails[]): Promise<{NAME_UPPER}[]>{
+        const {NAME_LOWER_PLURAL} = await this.{NAME_LOWER}Repository.find{NAME_UPPER_PLURAL}(errors);
+
+        return {NAME_LOWER_PLURAL};
+    }
+}

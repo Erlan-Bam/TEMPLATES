@@ -1,0 +1,25 @@
+import { I{NAME_UPPER}Repository } from "@core/interfaces/I{NAME_UPPER}Repository";
+import { Delete{NAME_UPPER}Request } from "@core/utils/{NAME_UPPER}/Request";
+import { ErrorDetails } from "@core/utils/utils";
+import { {NAME_UPPER}Repository } from "@infrastructure/repositories/{NAME_LOWER}Repository";
+const Code: string = process.env.WEBSITE_CODE;
+
+export default class Delete{NAME_UPPER}{
+    private {NAME_LOWER}Repository: I{NAME_UPPER}Repository;
+    constructor(){
+        this.{NAME_LOWER}Repository = new {NAME_UPPER}Repository();
+    }
+    async execute(request: Delete{NAME_UPPER}Request, errors: ErrorDetails[]): Promise<void | null>{
+        if(isNaN(request.id)) {
+            errors.push(new ErrorDetails(400, "Invalid id."));
+            return;
+        }
+
+        if(request.code !== Code){
+            errors.push(new ErrorDetails(403, "The website code is incorrect."));
+            return;
+        }
+
+        await this.{NAME_LOWER}Repository.deleteById(request.id, errors);
+    }
+}

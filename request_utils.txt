@@ -1,0 +1,15 @@
+import { {NAME_UPPER}Details } from "./types";
+
+export interface Add{NAME_UPPER}Request extends {NAME_UPPER}Details{
+    code: string;
+}
+
+export interface Delete{NAME_UPPER}Request{
+    id: number;
+    code: string;
+}
+
+export interface Update{NAME_UPPER}Request extends {NAME_UPPER}Details{
+    id: number;
+    code: string;
+}

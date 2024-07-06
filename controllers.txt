@@ -1,0 +1,100 @@
+import Add{NAME_UPPER} from "@core/use_cases/{NAME_UPPER}/Add{NAME_UPPER}";
+import Delete{NAME_UPPER} from "@core/use_cases/{NAME_UPPER}/Delete{NAME_UPPER}";
+import Get{NAME_UPPER_PLURAL} from "@core/use_cases/{NAME_UPPER}/Get{NAME_UPPER_PLURAL}";
+import Update{NAME_UPPER} from "@core/use_cases/{NAME_UPPER}/Update{NAME_UPPER}";
+import { Add{NAME_UPPER}Request, Delete{NAME_UPPER}Request, Update{NAME_UPPER}Request } from "@core/utils/{NAME_UPPER}/Request";
+import { ErrorDetails } from "@core/utils/utils";
+import { Request, Response } from "express";
+class {NAME_UPPER}Controller{
+    private add{NAME_UPPER}UseCase: Add{NAME_UPPER};
+    private get{NAME_UPPER_PLURAL}UseCase: Get{NAME_UPPER_PLURAL};
+    private delete{NAME_UPPER}UseCase: Delete{NAME_UPPER};
+    private update{NAME_UPPER}UseCase: Update{NAME_UPPER};
+    constructor(){
+        this.add{NAME_UPPER}UseCase = new Add{NAME_UPPER}();
+        this.get{NAME_UPPER_PLURAL}UseCase = new Get{NAME_UPPER_PLURAL}();
+        this.delete{NAME_UPPER}UseCase = new Delete{NAME_UPPER}();
+        this.update{NAME_UPPER}UseCase = new Update{NAME_UPPER}();
+    }
+    async add{NAME_UPPER}(req: Request, res: Response): Promise<any>{
+        const errors: ErrorDetails[] = [];
+        try{
+            const request: Add{NAME_UPPER}Request = {
+                code: req.body.code,
+                {DYNAMIC_PROPERTIES_DETAILS}
+            }
+
+            await this.add{NAME_UPPER}UseCase.execute(request, errors);
+
+            if(errors.length > 0){
+                return res.status(errors[0].code).json({ message: errors[0].details });
+            }
+
+            res.status(201).json({ message: "Added {NAME_LOWER} succesfully" });
+        } catch(error){
+            console.log(error);
+            res.status(500).json({ message: "Error adding the {NAME_LOWER}." });
+        }
+    }
+
+    async get{NAME_UPPER_PLURAL}(req: Request, res: Response): Promise<any>{
+        const errors: ErrorDetails[] = [];
+        try{
+            const {NAME_LOWER_PLURAL} = await this.get{NAME_UPPER_PLURAL}UseCase.execute(errors);
+
+            if(errors.length > 0){
+                return res.status(errors[0].code).json({ message: errors[0].details });
+            }
+
+            res.status(200).json({ {NAME_LOWER_PLURAL}: {NAME_LOWER_PLURAL} });
+        } catch(error){
+            console.log(error);
+            res.status(500).json({ message: "Error geting the {NAME_LOWER_PLURAL}." });
+        }
+    }
+
+    async delete{NAME_UPPER}(req: Request, res: Response): Promise<any>{
+        const errors: ErrorDetails[] = [];
+        try{
+            const request: Delete{NAME_UPPER}Request = {
+                id: Number(req.params.id),
+                code: req.params.code
+            }
+
+            await this.delete{NAME_UPPER}UseCase.execute(request, errors);
+
+            if(errors.length > 0){
+                return res.status(errors[0].code).json({ message: errors[0].details });
+            }
+
+            res.status(200).json({ message: "Deleted {NAME_LOWER} succesfully" });
+        } catch(error){
+            console.log(error);
+            res.status(500).json({ message: "Error deleting the {NAME_LOWER}." });
+        }
+    }
+
+    async update{NAME_UPPER}(req: Request, res: Response): Promise<any>{
+        const errors: ErrorDetails[] = [];
+        try{
+            const request: Update{NAME_UPPER}Request = {
+                id: Number(req.params.id),
+                code: req.body.code,
+                {DYNAMIC_PROPERTIES_DETAILS}
+            }
+
+            await this.update{NAME_UPPER}UseCase.execute(request, errors);
+
+            if(errors.length > 0){
+                return res.status(errors[0].code).json({ message: errors[0].details });
+            }
+
+            res.status(200).json({ message: "Updated {NAME_LOWER} succesfully" });
+        } catch(error){
+            console.log(error);
+            res.status(500).json({ message: "Error updateing the {NAME_LOWER}." });
+        }
+    }
+}
+
+export default new {NAME_UPPER}Controller();

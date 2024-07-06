@@ -1,0 +1,25 @@
+import { I{NAME_UPPER}Repository } from "@core/interfaces/I{NAME_UPPER}Repository";
+import { Add{NAME_UPPER}Request } from "@core/utils/{NAME_UPPER}/Request";
+import { {NAME_UPPER}Details } from "@core/utils/{NAME_UPPER}/types";
+import { ErrorDetails } from "@core/utils/utils";
+import { {NAME_UPPER}Repository } from "@infrastructure/repositories/{NAME_LOWER}Repository";
+const Code: string = process.env.WEBSITE_CODE;
+
+export default class Add{NAME_UPPER}{
+    private {NAME_LOWER}Repository: I{NAME_UPPER}Repository;
+    constructor(){
+        this.{NAME_LOWER}Repository = new {NAME_UPPER}Repository();
+    }
+    async execute(request: Add{NAME_UPPER}Request, errors: ErrorDetails[]): Promise<void> {
+        if(request.code !== Code){
+            errors.push(new ErrorDetails(403, "The website code is incorrect."));
+            return;
+        }
+
+        const new{NAME_UPPER}: {NAME_UPPER}Details = {
+            {DYNAMIC_ADD_PROPERTIES}
+        }
+
+        await this.{NAME_LOWER}Repository.create(new{NAME_UPPER}, errors);
+    }
+}

@@ -1,0 +1,6 @@
+export type {NAME_UPPER}Attributes = {
+    {DYNAMIC_PROPERTIES_ATTRIBUTES}
+}
+export type {NAME_UPPER}Details = {
+    {DYNAMIC_PROPERTIES_DETAILS}
+}
